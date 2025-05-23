@@ -148,5 +148,5 @@ def refresh():
 fetch_and_cache_movies()
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 7000))
+    port = int(os.environ.get("PORT", 7000))  # 👈 this line ensures compatibility with Render
     app.run(host="0.0.0.0", port=port)
