@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests
 from datetime import datetime
+import os
 import threading
 
 app = Flask(__name__)
@@ -24,7 +25,7 @@ def fetch_and_cache_movies():
         print(f"[INFO] Checking page {page}")
         params = {
             "api_key": TMDB_API_KEY,
-            "with_original_language": "hi",  # Hindi language code
+            "with_original_language": "hi",
             "sort_by": "release_date.desc",
             "release_date.lte": today,
             "region": "IN",
@@ -145,7 +146,6 @@ def refresh():
 
 # Fetch on startup
 fetch_and_cache_movies()
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 7000))
